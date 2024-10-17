@@ -1,0 +1,50 @@
+name: Angular Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Triggers on push to the main branch
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the latest code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'  # Specify Node.js version compatible with Angular
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm ci
+
+      # Build the Angular app with production configuration and base-href
+      - name: Build Angular App
+        run: |
+          npm install -g @angular/cli
+          ng build --configuration production --base-href 'https://rafayhabibullah.github.io/efi-app/'
+
+      # Deploy to GitHub Pages using a custom deploy command
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
+
+      # Cache node_modules to speed up future builds
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
+
+      # Set GitHub Pages permissions (if required)
+      - name: Enable GitHub Pages
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
