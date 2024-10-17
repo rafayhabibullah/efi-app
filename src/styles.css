@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #f8f9fa;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+h2,
+h4 {
+    margin-bottom: 20px;
+}
+
+.result {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+
+/* Scrollable dimensions container */
+#items-container {
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.collapse {
+    margin-top: 20px;
+}

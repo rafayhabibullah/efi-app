@@ -1,0 +1,46 @@
+<div class="container">
+    <h4 class="text-center">Package Dimensions (in inches)</h4>
+    <div id="items-container">
+    <div *ngFor="let item of dimensions; let i = index" class="row mb-3">
+        <div class="col-md-3">
+        <label for="length" class="form-label">Length (inches):</label>
+        <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="dimensions[i].length"
+            (input)="calculateWeight()"
+        />
+        </div>
+        <div class="col-md-3">
+        <label for="width" class="form-label">Width (inches):</label>
+        <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="dimensions[i].width"
+            (input)="calculateWeight()"
+        />
+        </div>
+        <div class="col-md-3">
+        <label for="height" class="form-label">Height (inches):</label>
+        <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="dimensions[i].height"
+            (input)="calculateWeight()"
+        />
+        </div>
+        <div class="col-md-3">
+        <button class="btn btn-danger mt-4" (click)="removeItem(i)">Remove</button>
+        </div>
+    </div>
+    </div>
+
+    <button class="btn btn-success mt-2" (click)="addItem()">Add Item</button>
+
+    <!-- Results -->
+    <div *ngIf="itemCount > 0 && totalWeightKg > 0" id="results-container">
+    <p>Estimated Weight: {{ totalWeightKg.toFixed(2) }} kgs</p>
+    <p>Total Charges: ${{ totalCharges.toFixed(2) }} USD</p>
+    <p>Charge per KG: ${{ perKgCharge.toFixed(2) }} USD</p>
+    </div>
+</div>
