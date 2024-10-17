@@ -24,6 +24,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      # Set GitHub Pages permissions (if required)
+      - name: Enable GitHub Pages
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "rafayhabibullah@hotmail.com"
+
       # Build the Angular app with production configuration and base-href
       - name: Build Angular App
         run: |
@@ -42,9 +48,3 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node_modules-
-
-      # Set GitHub Pages permissions (if required)
-      - name: Enable GitHub Pages
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "rafayhabibullah@hotmail.com"
