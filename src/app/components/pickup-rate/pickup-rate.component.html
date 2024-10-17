@@ -11,14 +11,15 @@
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <div class="mb-3">
-                        <label for="weight" class="form-label">Enter weight (kg):</label>
+                        <label for="weight" class="form-label">Enter weight:</label>
                         <input type="number" class="form-control" [(ngModel)]="weight" />
+                        <span class="input-group-text">kg(s)</span>
                     </div>
                     <button class="btn btn-primary" (click)="calculateRate()">Calculate Rate</button>
 
                     <div class="result text-center">
-                        <p>Pickup Rate: ${{ rate }} per kg</p>
-                        <p>Total: ${{ totalAmount }}</p>
+                        <p>Pickup Rate: ${{ rate.toFixed(2) }} per kg</p>
+                        <p>Total: ${{ totalAmount.toFixed(2) }}</p>
                     </div>
                 </div>
             </div>
