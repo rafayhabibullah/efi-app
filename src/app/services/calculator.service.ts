@@ -27,7 +27,7 @@ export class CalculatorService {
   // Get rate based on weight
   private getRateFromWeight(weight: number) {
     if (weight < 350) {
-      return 300; // minimum charge
+      return 1; // minimum charge
     } else if (weight < 500) {
       return (1 - ((weight - 350) / 150) * 0.10); // $1/kg to $0.90/kg
     } else if (weight < 1000) {

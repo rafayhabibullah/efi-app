@@ -29,12 +29,9 @@ h4 {
     font-size: 0.9em;
 }
 
-/* Scrollable dimensions container */
-#items-container {
-    overflow-y: auto;
-    margin-bottom: 20px;
-}
 
-.collapse {
-    margin-top: 20px;
+
+.bd-navbar {
+    padding: .75rem 0;
+    background-color: #7952b3;
 }

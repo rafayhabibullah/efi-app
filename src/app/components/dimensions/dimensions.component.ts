@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { CalculatorService } from '../../services/calculator.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class DimensionsComponent {
   totalWeightKg: number = 0;
   totalCharges: number = 0;
   perKgCharge: number = 0;
+  pickUpRate: number = 0;
 
   constructor(private calculatorService: CalculatorService) {}
 
@@ -30,6 +31,7 @@ export class DimensionsComponent {
     if (this.totalWeightKg > 0) {
       this.totalCharges = this.calculatorService.calculateTotalCharges(this.totalWeightKg);
       this.perKgCharge = this.totalCharges / this.totalWeightKg;
+      this.pickUpRate = this.calculatorService.calculatePickupRate(this.totalWeightKg)
     }
   }
 }

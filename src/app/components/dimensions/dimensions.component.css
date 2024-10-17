@@ -1,0 +1,22 @@
+.dim-container {
+    margin-top: 15px;
+}
+
+#items-container {
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.collapse {
+    margin-top: 20px;
+}
+
+.length-field {
+    margin-left: 5px;
+}
+
+.results-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}

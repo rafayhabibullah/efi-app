@@ -1,46 +1,78 @@
-<div class="container">
-    <h4 class="text-center">Package Dimensions (in inches)</h4>
+<div class="container dim-container">
+    <h4 class="text-center">Package Dimensions</h4>
     <div id="items-container">
-    <div *ngFor="let item of dimensions; let i = index" class="row mb-3">
-        <div class="col-md-3">
-        <label for="length" class="form-label">Length (inches):</label>
-        <input
-            type="number"
-            class="form-control"
-            [(ngModel)]="dimensions[i].length"
-            (input)="calculateWeight()"
-        />
-        </div>
-        <div class="col-md-3">
-        <label for="width" class="form-label">Width (inches):</label>
-        <input
-            type="number"
-            class="form-control"
-            [(ngModel)]="dimensions[i].width"
-            (input)="calculateWeight()"
-        />
-        </div>
-        <div class="col-md-3">
-        <label for="height" class="form-label">Height (inches):</label>
-        <input
-            type="number"
-            class="form-control"
-            [(ngModel)]="dimensions[i].height"
-            (input)="calculateWeight()"
-        />
-        </div>
-        <div class="col-md-3">
-        <button class="btn btn-danger mt-4" (click)="removeItem(i)">Remove</button>
+        <div *ngFor="let item of dimensions; let i = index" class="row mb-3">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-3">
+                    <div class="input-group length-field">
+                        <span class="input-group-text">L</span>
+                        <input type="number" class="form-control" [(ngModel)]="dimensions[i].length"
+                            (input)="calculateWeight()" aria-label="Length"/>
+                        <span class="input-group-text">in</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text">W</span>
+                        <input type="number" class="form-control" [(ngModel)]="dimensions[i].width"
+                            (input)="calculateWeight()" aria-label="Width"/>
+                        <span class="input-group-text">in</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text">H</span>
+                        <input type="number" class="form-control" [(ngModel)]="dimensions[i].height"
+                            (input)="calculateWeight()" aria-label="Height"/>
+                        <span class="input-group-text">in</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-success me-2" (click)="addItem()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-danger" (click)="removeItem(i)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
 
-    <button class="btn btn-success mt-2" (click)="addItem()">Add Item</button>
+    <!-- <button class="btn btn-success" (click)="addItem()" *ngIf="dimensions.length === 0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+        </svg>
+        Add Item
+    </button> -->
 
-    <!-- Results -->
-    <div *ngIf="itemCount > 0 && totalWeightKg > 0" id="results-container">
-    <p>Estimated Weight: {{ totalWeightKg.toFixed(2) }} kgs</p>
-    <p>Total Charges: ${{ totalCharges.toFixed(2) }} USD</p>
-    <p>Charge per KG: ${{ perKgCharge.toFixed(2) }} USD</p>
+
+    <div class="results-container">
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item">Results</li>
+            <ul class="list-group list-group-vertical">
+                <li class="list-group-item">Estimated Weight</li>
+                <li class="list-group-item">{{ totalWeightKg.toFixed(2) }} kg(s)</li>
+            </ul>
+            <ul class="list-group list-group-vertical">
+                <li class="list-group-item">Pick-up Rate</li>
+                <li class="list-group-item">$ {{ pickUpRate.toFixed(2) }}</li>
+            </ul>
+            <ul class="list-group list-group-vertical">
+                <li class="list-group-item">Total Charges</li>
+                <li class="list-group-item">$ {{ totalCharges.toFixed(2) }}</li>
+            </ul>
+            <ul class="list-group list-group-vertical">
+                <li class="list-group-item">Charge per KG</li>
+                <li class="list-group-item">$ {{ perKgCharge.toFixed(2) }}</li>
+            </ul>
+        </ul>
     </div>
 </div>
