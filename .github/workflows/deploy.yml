@@ -27,7 +27,7 @@ jobs:
       # Set GitHub Pages permissions (if required)
       - name: Enable GitHub Pages
         run: |
-          git config --global user.name "GitHub Actions"
+          git config --global user.name "rafayhabibullah"
           git config --global user.email "rafay_habibullah@hotmail.com"
 
       # Build the Angular app with production configuration and base-href
