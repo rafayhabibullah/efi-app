@@ -38,6 +38,8 @@ jobs:
 
       # Deploy to GitHub Pages using a custom deploy command
       - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run deploy
 
       # Cache node_modules to speed up future builds
